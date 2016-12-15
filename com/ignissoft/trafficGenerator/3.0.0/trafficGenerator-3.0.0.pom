@@ -9,6 +9,14 @@
 			<id>top-q</id>
 			<url>http://maven.top-q.co.il/content/groups/public</url>
 		</repository>
+    	<repository>
+        	<id>Java2Tcl-mvn-repo</id>
+        	<url>https://raw.github.com/shmir/Java2Tcl/mvn-repo/</url>
+        	<snapshots>
+            	<enabled>true</enabled>
+            	<updatePolicy>always</updatePolicy>
+        	</snapshots>
+    	</repository>		
 	</repositories>
 	<dependencies>
 		<dependency>
