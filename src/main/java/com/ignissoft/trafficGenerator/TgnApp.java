@@ -81,7 +81,7 @@ public class TgnApp {
 	 *        full path to configuration file.
 	 * @throws TrafficException
 	 */
-	public void loadConfigFile(String fileName) throws TrafficException {
+	public void loadConfigFile(String fileName) throws Exception {
 		throw new NotImplementedException();
 	}
 	
@@ -159,18 +159,20 @@ public class TgnApp {
 	/**
 	 * Build DB of major objects in the configuration - ports, devices and streams for faster access and easier use during the test.
 	 */
-	public void readObjectNames() throws TrafficException {
+	public void readObjectNames() throws Exception {
 		throw new NotImplementedException();
 	}
 	
-	/**
-	 * Build DB of major objects in the configuration - ports, devices and streams for faster access and easier use during the test.
-	 */
 	public void printObjects() throws Exception {
-		System.out.println("\n");
+		boolean printCommand = getShell().isPrintCommand();
+		boolean printReturn = getShell().isPrintReturn();
+		getShell().setPrintCommand(false);
+		getShell().setPrintReturn(false);
 		for (TgnObject object : TgnObject.getTgnInstances()) {
 			System.out.println(object.getName() + " = " + object.getHandle() + " ; " + object);
 		}
+		getShell().setPrintCommand(printCommand);
+		getShell().setPrintReturn(printReturn);
 	}
 	
 	/*

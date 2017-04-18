@@ -24,7 +24,7 @@ public class TgnObject {
 	
 	protected String handle = null;
 	
-	protected HashMap<String, TgnObject> name2object = new HashMap<String, TgnObject>();
+	protected HashMap<String, TgnObject> objects = new HashMap<String, TgnObject>();
 	
 	private static ArrayList<TgnObject> tgnInstances = new ArrayList<TgnObject>();
 	
@@ -66,7 +66,7 @@ public class TgnObject {
 	 * @throws TrafficException
 	 */
 	protected static String handelShellCommand(ShellCommand cmd, String msg) throws TrafficException {
-		shell.executeCommand(cmd);
+		getShell().executeCommand(cmd);
 		if (cmd.isFail()) {
 			throw new TrafficException(msg + cmd.getErrorString().split("[\\n\\r]")[0]);
 		}
@@ -102,16 +102,26 @@ public class TgnObject {
 	}
 	
 	/*
-	 * Utilities.
+	 * Objects management.
 	 */
+	
+	public <T extends TgnObject> HashMap<String, T> getObjectsByType(Class<T> type) {
+		HashMap<String, T> objectsByType = new HashMap<String, T>();
+		for (String key : getObjects().keySet()) {
+			if (getObjects().get(key).getClass() == type) {
+				objectsByType.put(key, type.cast(getObjects().get(key)));
+			}
+		}
+		return objectsByType;
+	}
 	
 	/**
 	 * Simple debug tool that prints all object children to the console.
 	 */
 	public void printName2object() {
 		System.out.println("\n");
-		for (String key : name2object.keySet()) {
-			System.out.println(key + " = " + name2object.get(key).getHandle() + " ; " + name2object.get(key));
+		for (String key : objects.keySet()) {
+			System.out.println(key + " = " + objects.get(key).getHandle() + " ; " + objects.get(key));
 		}
 	}
 	
@@ -143,8 +153,8 @@ public class TgnObject {
 		return parent;
 	}
 	
-	public HashMap<String, TgnObject> getName2object() {
-		return name2object;
+	public HashMap<String, TgnObject> getObjects() {
+		return objects;
 	}
 	
 	public static ArrayList<TgnObject> getTgnInstances() {

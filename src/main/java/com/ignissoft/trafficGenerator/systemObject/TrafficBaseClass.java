@@ -12,7 +12,7 @@ import jsystem.framework.system.SystemObjectImpl;
  */
 public class TrafficBaseClass extends SystemObjectImpl {
 	
-	private TgnApp traffic;
+	private static TgnApp traffic;
 	
 	/*
 	 * Standard Getters and Setters.
@@ -22,8 +22,8 @@ public class TrafficBaseClass extends SystemObjectImpl {
 		return traffic;
 	}
 	
-	public void setTraffic(TgnApp traffic) {
-		this.traffic = traffic;
+	public static void setTraffic(TgnApp traffic) {
+		TrafficBaseClass.traffic = traffic;
 	}
 	
 }
