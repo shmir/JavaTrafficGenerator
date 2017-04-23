@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ignissoft</groupId>
 	<artifactId>trafficGenerator</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<repositories>
 		<repository>
 			<id>top-q</id>
