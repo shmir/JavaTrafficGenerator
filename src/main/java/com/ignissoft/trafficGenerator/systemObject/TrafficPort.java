@@ -5,7 +5,6 @@ package com.ignissoft.trafficGenerator.systemObject;
 
 import org.apache.commons.lang.NotImplementedException;
 
-import com.ignissoft.trafficGenerator.TgnObject;
 import com.ignissoft.trafficGenerator.TrafficException;
 
 /**
@@ -20,8 +19,6 @@ public class TrafficPort extends TrafficBaseClass implements Cloneable {
 	protected int slot;
 	
 	protected int port;
-	
-	protected TgnObject tgnPort = null;
 	
 	/*
 	 * Interface methods.
@@ -66,14 +63,6 @@ public class TrafficPort extends TrafficBaseClass implements Cloneable {
 	
 	public void setIp(String ip) {
 		this.ip = ip;
-	}
-	
-	public TgnObject getTgnPort() {
-		return tgnPort;
-	}
-	
-	public void setTgnPort(TgnObject tgnPort) {
-		this.tgnPort = tgnPort;
 	}
 	
 	public void setPortName(String portName) {

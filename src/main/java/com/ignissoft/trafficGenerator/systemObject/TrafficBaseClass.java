@@ -3,9 +3,10 @@
  */
 package com.ignissoft.trafficGenerator.systemObject;
 
-import com.ignissoft.trafficGenerator.TgnApp;
-
 import jsystem.framework.system.SystemObjectImpl;
+
+import com.ignissoft.trafficGenerator.TgnApp;
+import com.ignissoft.trafficGenerator.TgnObject;
 
 /**
  * Base class for all traffic system object classes.<br>
@@ -13,6 +14,8 @@ import jsystem.framework.system.SystemObjectImpl;
 public class TrafficBaseClass extends SystemObjectImpl {
 	
 	private static TgnApp traffic;
+	
+	protected TgnObject tgnObject = null;
 	
 	/*
 	 * Standard Getters and Setters.
@@ -24,6 +27,10 @@ public class TrafficBaseClass extends SystemObjectImpl {
 	
 	public static void setTraffic(TgnApp traffic) {
 		TrafficBaseClass.traffic = traffic;
+	}
+
+	public TgnObject getTgnObject() {
+		return tgnObject;
 	}
 	
 }

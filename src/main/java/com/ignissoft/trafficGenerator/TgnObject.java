@@ -115,6 +115,10 @@ public class TgnObject {
 		return objectsByType;
 	}
 	
+	public <T extends TgnObject> T getObjectByType(Class<T> type) {
+		return type.cast(getObjectsByType(type).values().iterator().next());
+	}
+	
 	/**
 	 * Simple debug tool that prints all object children to the console.
 	 */

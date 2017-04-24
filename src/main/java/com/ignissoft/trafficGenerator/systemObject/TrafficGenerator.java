@@ -73,10 +73,10 @@ public class TrafficGenerator extends TrafficBaseClass {
 	 * 
 	 * @return map of traffic ports.
 	 */
-	public <T extends HashMap<String, TrafficPort>> HashMap<String, TrafficPort> getPorts() {
-		HashMap<String, TrafficPort> portsMap = new HashMap<String, TrafficPort>();
-		for (int i = 0; i < ports.length; i++) {
-			portsMap.put(ports[i].getPortName(), ports[i]);
+	public <T extends TrafficPort> HashMap<String, T> getPorts(Class<T> type) {
+		HashMap<String, T> portsMap = new HashMap<String, T>();
+		for (TrafficPort port : ports) {
+			portsMap.put(port.getPortName(), type.cast(port));
 		}
 		return portsMap;
 	}
